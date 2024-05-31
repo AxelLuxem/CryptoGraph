@@ -1,31 +1,28 @@
-import {
-  useCallback,
-  useMemo,
-  useEffect,
-  useState,
-} from "react";
 import { Chart } from "react-google-charts";
-import axios from "axios";
 import useGetData from "./useGetData";
 
 const App = () => {
-  const days = useGetData();
+  const data = useGetData();
+  const temp = data.map((item) => [item.date, item.value]);
 
-  console.log("refresh");
+  const values = [["Year", "BTC"]];
+
+  for (let i = 0; i < temp.length; i++) {
+    values.push(temp[i]);
+  }
+
   return (
     <div>
-      <div>RESULT: {days?.toString()}</div>
       <Chart
         chartType="LineChart"
-        data={[
-          ["Age", "Weight"],
-          [4, 5.5],
-          [6, 6.8],
-          [8, 12],
-        ]}
-        width="100%"
+        rows={temp}
+        options={{
+          hAxis: { title: "date" },
+          vAxis: { title: "price" },
+        }}
+        data={values}
+        width="800px"
         height="100%"
-        legendToggle
       />
     </div>
   );
