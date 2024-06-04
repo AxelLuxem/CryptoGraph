@@ -2,7 +2,9 @@ import { useState, useRef, useEffect } from "react";
 import axios from "axios";
 
 const callAPI = async (date) => {
-  const url = `https://marketdata.tradermade.com/api/v1/historical?currency=BTCUSD&date=${date}&api_key=hklps-rXRvcntceAtnUC`;
+  const url = `https://marketdata.tradermade.com/api/v1/historical?currency=BTCUSD&date=${date}&api_key=${
+    import.meta.env.VITE_API_KEY
+  }`;
 
   try {
     const value = await axios.get(url);
