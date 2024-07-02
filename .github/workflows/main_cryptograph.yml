@@ -22,6 +22,8 @@ jobs:
           node-version: "20"
 
       - name: Yarn install, build
+        env:
+          VITE_API_URI: ${{ secrets.VITE_API_URI }}
         run: |
           yarn
           yarn build
