@@ -23,7 +23,7 @@ jobs:
 
       - name: Yarn install, build
         env:
-          VITE_API_URI: ${{ secrets.VITE_API_URI }}
+          VITE_API_URI: ${{ secrets.VITE_API_KEY }}
         run: |
           yarn
           yarn build
