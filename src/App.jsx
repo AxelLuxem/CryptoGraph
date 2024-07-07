@@ -17,7 +17,9 @@ const App = () => {
 
   return (
     <div className="Pagebackground">
-      <h1>Bitcoin price over the last 7 days</h1>
+      <h1 className="title">
+        Bitcoin price over the last 7 days
+      </h1>
       <Chart
         chartType="LineChart"
         rows={transformedData}
